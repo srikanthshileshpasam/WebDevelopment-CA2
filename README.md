@@ -305,11 +305,6 @@ I use [GitHub](github.com) for version control. Which backup my code incase I en
 I can easily traceback my code on GitHub.
 
 
-### Authors
-
-**Dehinde - Shogbanmu** - *Project 4* 
-
-
 
 ## Credits
 
@@ -319,14 +314,3 @@ The logos was generated via icon8
 The data was retrived from my sqlite3
 
 
-### Acknowledgements
-I received a great inspiration for this project via my mentor, tutors, and slack he was a great help.
-Ali Ashik(Mentor)
-Samantha(Tutor)
-Michael(Tutor)
-Stephen(Tutor)
-Chris
-
-
-
-[![Build Status](https://travis-ci.org/dennyshow/milestone-project4.svg?branch=master)](https://travis-ci.org/dennyshow/milestone-project4)
