@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
+
+<style>
+  
+.main-svg,.svg-container{
+  height: 500px !important;
+  background-color: rgba(0,0,0,0) !important;
+  z-index: 10;
+  margin: 0 auto !important;
+}
+.heart {
+	font-size: 150px;
+	color: red;
+  stroke: maroon;
+	animation: beat .25s infinite alternate;
+	transform-origin: center;
+  stroke-miterlimit: 10;  
+  stroke-width: 20px;
+}
+
+/* Heart beat animation */
+@keyframes beat{
+	to { transform: scale(1.4); }
+}
+.box {
+  width: 80%;
+  height: 300px;
+  border: 1px solid white;
+   margin: 0 auto;
+}
+.small-box{
+
+  height: 50px;
+  width: 100%;
+  background-color: white;
+
+}
+@media only screen and (max-width: 600px) {
+  html,body {
+    overflow-x: hidden;
+  }
+  .svg-container{
+    width: 100% !important;
+  }
+}
+</style>
+<nav class="navbar navbar-light bg-light justify-content-between" style="text-align: right;   padding: .5rem 1rem;">
+  <a href="/logout" class="btn btn--radius-2 " type="submit" style="display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;    color: #fff;
+background-color: #525252;
+border-color: #525252">Log Out</a>
+
+</nav>
+<div class="page-wrapper bg-gra-02 p-t-130 font-poppins">
+  <div class="wrapper wrapper--w680" style="text-align: center;">
+{% if result == 0 %}
+<div class="heart">&#x2665;</div>
+<h2  style="text-align: center;">No Heart Disease Detected.</h2>
+{% elif result == 1 %}
+<div class="heart" style="color:black !important;">&#x2665;</div>
+<h2  style="text-align: center;">Heart Disease Detected.</h2>
+{% endif %}
+
+  </div>
+<br><br>
+  <div style="text-align: center;">
+    <button class="btn-red" onclick="graph1()">Age Histogram</button>
+    <button class="btn-red" onclick="graph2()">Age vs Chol Scatter Plot</button>
+    <button class="btn-red" onclick="graph3()">Target vs Chol Line Chart</button>
+<br>
+    <div id='myDiv' style="width: 100% !important;"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <div id='myDiv1'  ><!-- Plotly chart will be drawn inside this DIV --></div>
+    <div  >
+        <canvas id="lineChart" height="450" width="800" style="padding: 10px;width: 100% !important;height: 450px;"></canvas>
+      </div>   
+
+  </div> 
+  
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+  displayLineChart();    
+document.getElementById("myDiv1").style.display = 'none'
+document.getElementById("lineChart").style.display = 'none'
+
+function graph1(){
+  document.getElementById("myDiv1").style.display = 'none'
+  document.getElementById("lineChart").style.display = 'none'
+  $("#myDiv").fadeIn("slow");
+}
+function graph2(){
+document.getElementById("myDiv").style.display = 'none'
+document.getElementById("lineChart").style.display = 'none'
+$("#myDiv1").fadeIn("slow");
+
+}
+var hist = {{ age | safe }}
+
+var x = [];
+// for (var i = 0; i < 500; i ++) {
+//   x[i] = Math.random();
+// }
+x = hist;
+var trace = {
+  x: x,
+  type: 'histogram',
+};
+var data = [trace];
+Plotly.newPlot('myDiv', data);
+
+var trace1 = {
+y: {{ age_zero | safe }},
+x: {{ chol_zero | safe }},
+mode: 'markers',
+type: 'scatter',
+name: '0',
+marker: { size: 12 }
+};
+
+var trace2 = {
+y: {{ age_one | safe }},
+x: {{ chol_one | safe }},
+mode: 'markers',
+type: 'scatter',
+name: '1',
+
+marker: { size: 12 }
+};
+
+var data = [ trace1, trace2 ];
+
+var layout = {
+xaxis: {
+  range: [ 100, 600 ]
+},
+yaxis: {
+  range: [20, 80]
+},
+title:'Data Labels Hover'
+};
+
+Plotly.newPlot('myDiv1', data, layout);
+function graph3(){
+  document.getElementById("myDiv").style.display = 'none'
+  document.getElementById("myDiv1").style.display = 'none'
+  $("#lineChart").fadeIn("slow");
+
+}
+
+function displayLineChart() {
+var data = {
+  labels: {{ chol1 | safe }},
+  datasets: [
+      {
+          label: "Prime and Fibonacci",
+          fillColor: "rgba(220,220,220,0.2)",
+          strokeColor: "rgba(220,220,220,1)",
+          pointColor: "rgba(220,220,220,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(220,220,220,1)",
+          data: {{ target1 | safe }}
+      }
+  ]
+};
+var ctx = document.getElementById("lineChart").getContext("2d");
+var options = { };
+var lineChart = new Chart(ctx).Line(data, options);
+}
+</script>
+
+
+{% endblock %}

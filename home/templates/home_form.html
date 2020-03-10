@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Monitoring Tool</title>
+                   <!-- STATIC CSS -->
+                   <link rel="stylesheet" href="{% static 'css/style.css' %} ">
+                   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+            <!-- Custom Theme files -->
+           
+            <!-- //Custom Theme files -->
+            <!-- web font -->
+            <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" />
+
+                   <!-- JS SECTION -->
+   <style>
+   
+   </style>
+                </head>
+<body>
+    <nav class="navbar navbar-light bg-light justify-content-between" style="text-align: right;   padding: .5rem 1rem;">
+        <a href="/logout" class="btn btn--radius-2 " type="submit" style="display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;    color: #fff;
+    background-color: #525252;
+    border-color: #525252;">Log Out</a>
+
+      </nav>
+
+<div class="main-w3layouts wrapper">
+    <h1>Health Checkup</h1>
+    <div class="main-agileinfo">
+        <div class="agileits-top">
+            <form action="/result" method="POST">
+                {% csrf_token %}
+                <input class="text" type="number" name="age" placeholder="Age" required="">
+                <div style="margin-top: 30px;">
+                    <label style="color: white;">Gender:</label>
+        
+                <select class="text email" name="sex" required style="width: 100%;margin-top: 5px;">
+                    <option value="1" style="color: black;"> Male</option>
+                    <option value="0" style="color: black;">Female</option>
+                  </select>
+                </div>
+                <div style="margin-top: 30px;">
+                    <label style="color: white;">Chest Pain Type:</label>
+        
+                <select class="text email" name="cp" required style="width: 100%;margin-top: 5px;">
+                    <option  style="color: black;"> 0</option>
+                    <option  style="color: black;">1</option>
+                    <option  style="color: black;">2</option>
+                    <option  style="color: black;">3</option>
+
+                </select>
+                </div>
+                <input class="text" type="number" placeholder="Resting Blood Pressure" name="trestbps" required="" style="margin-top: 30px;">
+                <input class="text w3lpass" type="number" name="chol" placeholder="Serum Cholestrol (mg/dl)" required="">
+                <div style="margin-top: 30px;">
+                    <label style="color: white;">Fasting Blood Sugar (Mg/Dl):</label>
+                <select class="text email" name="fbs" required style="width: 100%;margin-top: 5px;">
+                    <option value="1"  style="color: black;"> True</option>
+                    <option  value="0" style="color: black;">False</option>
+                </select>
+                </div>
+                <div style="margin-top: 30px;">
+                    <label style="color: white;"> Resting Electrocardiographic Results:</label>
+                <select class="text email" name="restecg" required style="width: 100%;margin-top: 5px;">
+                    <option  style="color: black;"> 0</option>
+                    <option  style="color: black;">1</option>
+                    <option  style="color: black;">2</option>
+                </select>
+                </div>
+                <input class="text" type="number"  placeholder="Maximum Heart Rate Achieved " name="thalach" required="" style="margin-top: 30px;">
+                <div style="margin-top: 30px;">
+                    <label style="color: white;">Exercise Induced Angina:</label>
+                <select class="text email" name="exang" required style="width: 100%;margin-top: 5px;">
+                    <option value="1"  style="color: black;"> Yes</option>
+                    <option value="0"  style="color: black;">No</option>
+                </select>
+                </div>
+                <input class="text" type="number" placeholder="ST Depression" name="oldpeak" step="0.01" required="" style="margin-top: 30px;">
+                <div style="margin-top: 30px;">
+                    <label style="color: white;">ST Segment:</label>
+                <select class="text email" name="slope" required style="width: 100%;margin-top: 5px;">
+                    <option style="color: black;"> 0</option>
+                    <option   style="color: black;">1</option>
+                    <option   style="color: black;">2</option>
+
+                </select>
+                </div>
+                <div style="margin-top: 30px;">
+                    <label style="color: white;">Number of major vessels:</label>
+                <select class="text email" name="ca" required style="width: 100%;margin-top: 5px;">
+                    <option style="color: black;"> 0</option>
+                    <option   style="color: black;">1</option>
+                    <option   style="color: black;">2</option>
+                    <option   style="color: black;">3</option>
+                    <option   style="color: black;">4</option>
+
+                </select>
+                </div>
+                <div style="margin-top: 30px;">
+                    <label style="color: white;">Thal:</label>
+                <select class="text email" name="thal" required style="width: 100%;margin-top: 5px;">
+                    <option   style="color: black;">1</option>
+                    <option   style="color: black;">2</option>
+                    <option   style="color: black;">3</option>
+                </select>
+                </div>
+                
+                <input type="submit" value="SUBMIT">
+            </form>
+        </div>
+    </div>
+    <!-- copyright -->
+    
+    <!-- //copyright -->
+    <ul class="colorlib-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+</body>
+</html>
