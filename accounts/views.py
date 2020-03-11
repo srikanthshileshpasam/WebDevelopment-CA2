@@ -78,3 +78,6 @@ def user_profile(request):
     
     user = User.objects.get(email=request.user.email)
     return render(request, 'profile.html', {"profile": user})
+
+def landing_page(request):
+    return render(request, 'landingpage.html')

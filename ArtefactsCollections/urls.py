@@ -22,7 +22,7 @@ from home import urls as urls_home
 
 from home.views import home_view
 
-from accounts.views import index, logout, login, registration, user_profile
+from accounts.views import index, logout, login, registration, user_profile, landing_page
 
 
 urlpatterns = [
@@ -30,8 +30,9 @@ urlpatterns = [
     url(r'^login/$', login, name="login"),
     url(r'^register/$', registration, name="registration"),
     url(r'^profile/$', user_profile, name="profile"),
-    
+
     url(r'^admin/', admin.site.urls),
     # url(r'^h/$', home_view, name="home"),
-    url(r'', include('home.urls')),    
+    url(r'', include('home.urls')),
+    url(r'^landingpage/$', landing_page, name="landingpage"),   
 ]
