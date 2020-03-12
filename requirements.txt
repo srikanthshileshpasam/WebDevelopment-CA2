@@ -11,4 +11,3 @@ gunicorn
 django-heroku
 pandas
 sklearn
-whitenoise==4.0
