@@ -30,9 +30,7 @@ urlpatterns = [
     url(r'^login/$', login, name="login"),
     url(r'^register/$', registration, name="registration"),
     url(r'^profile/$', user_profile, name="profile"),
-
     url(r'^admin/', admin.site.urls),
-    # url(r'^h/$', home_view, name="home"),
     url(r'', include('home.urls')),
-    url(r'^landingpage/$', landing_page, name="landingpage"),   
+    url(r'^landingpage/$', landing_page, name="landingpage"),
 ]
