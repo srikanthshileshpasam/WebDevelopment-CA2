@@ -1,20 +1,16 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HeartBeat 2.0 - Monitoring Tool</title>
-                   <!-- STATIC CSS -->
-                   <link rel="stylesheet" href="{% static 'css/style.css' %} ">
-                   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-            <!-- web font -->
-            <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %} ">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" />
+</head>
 
-   <style>
-
-   </style>
-                </head>
 <body>
     <nav class="navbar navbar-light bg-light justify-content-between" style="text-align: right;   padding: .5rem 1rem;">
         <a href="/logout" class="btn btn--radius-2 " type="submit" style="display: inline-block;
@@ -32,9 +28,8 @@
         line-height: 1.5;
         border-radius: .25rem;
         transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;    color: #fff;
-    background-color: #525252;
-    border-color: #525252;">Log Out</a>
-
+        background-color: #525252;
+        border-color: #525252;">Log Out</a>
       </nav>
 
 <div class="main-w3layouts wrapper">
@@ -52,6 +47,7 @@
                     <option value="0" style="color: black;">Female</option>
                   </select>
                 </div>
+
                 <div style="margin-top: 30px;">
                     <label style="color: white;">Chest Pain Type:</label>
 
@@ -63,8 +59,10 @@
 
                 </select>
                 </div>
+
                 <input class="text" type="number" placeholder="Resting Blood Pressure" name="trestbps" required="" style="margin-top: 30px;">
                 <input class="text w3lpass" type="number" name="chol" placeholder="Serum Cholestrol (mg/dl)" required="">
+
                 <div style="margin-top: 30px;">
                     <label style="color: white;">Fasting Blood Sugar (Mg/Dl):</label>
                 <select class="text email" name="fbs" required style="width: 100%;margin-top: 5px;">
@@ -72,6 +70,7 @@
                     <option  value="0" style="color: black;">False</option>
                 </select>
                 </div>
+
                 <div style="margin-top: 30px;">
                     <label style="color: white;"> Resting Electrocardiographic Results:</label>
                 <select class="text email" name="restecg" required style="width: 100%;margin-top: 5px;">
@@ -80,6 +79,7 @@
                     <option  style="color: black;">2</option>
                 </select>
                 </div>
+
                 <input class="text" type="number"  placeholder="Maximum Heart Rate Achieved " name="thalach" required="" style="margin-top: 30px;">
                 <div style="margin-top: 30px;">
                     <label style="color: white;">Exercise Induced Angina:</label>
@@ -88,6 +88,7 @@
                     <option value="0"  style="color: black;">No</option>
                 </select>
                 </div>
+
                 <input class="text" type="number" placeholder="ST Depression" name="oldpeak" step="0.01" required="" style="margin-top: 30px;">
                 <div style="margin-top: 30px;">
                     <label style="color: white;">ST Segment:</label>
@@ -95,9 +96,9 @@
                     <option style="color: black;"> 0</option>
                     <option   style="color: black;">1</option>
                     <option   style="color: black;">2</option>
-
                 </select>
                 </div>
+
                 <div style="margin-top: 30px;">
                     <label style="color: white;">Number of major vessels:</label>
                 <select class="text email" name="ca" required style="width: 100%;margin-top: 5px;">
@@ -106,9 +107,9 @@
                     <option   style="color: black;">2</option>
                     <option   style="color: black;">3</option>
                     <option   style="color: black;">4</option>
-
                 </select>
                 </div>
+
                 <div style="margin-top: 30px;">
                     <label style="color: white;">Thal:</label>
                 <select class="text email" name="thal" required style="width: 100%;margin-top: 5px;">
