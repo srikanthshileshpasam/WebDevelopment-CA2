@@ -26,8 +26,7 @@ def home_view(request):
         thal = int(request.POST['thal'])
 
         lst = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
-        # lst = [44,1,2,130,233,0,1,179,1,0.4,2,0,2] 
-        # lst = [52,1,0,125,212,0,1,168,0,1,2,2,2]
+        
         print(lst)
         df = pd.DataFrame([lst])
         df.columns =['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal']
