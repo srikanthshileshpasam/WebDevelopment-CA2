@@ -1,6 +1,7 @@
 import pandas as pd
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from sklearn.externals import joblib
+from .models import Document, MedicalInfo
 
 def home_form(request):
     if request.user.is_authenticated:
@@ -24,15 +25,16 @@ def home_view(request):
         slope = int(request.POST['slope'])
         ca = int(request.POST['ca'])
         thal = int(request.POST['thal'])
-
+        MedicalInfo(user=request.user, age=age, sex=sex, cp=cp, trestbps=trestbps, chol=chol, fbs=fbs, restecg=restecg, thalach=thalach, exang=exang, oldpeak=oldpeak, slope=slope, ca=ca, thal=thal).save()
         lst = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
-        
-        print(lst)
+        # lst = [44,1,2,130,233,0,1,179,1,0.4,2,0,2] 
+        # lst = [52,1,0,125,212,0,1,168,0,1,2,2,2]
         df = pd.DataFrame([lst])
         df.columns =['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal']
         result = loaded_model.predict(df)
-        print(result)
-        df = pd.read_csv('heart.csv')
+        csv_file = Document.objects.get(description__icontains="heart")
+        print(csv_file.document)
+        df = pd.read_csv(csv_file.document)
         # Age histogram
         # Age vs chol scatter plot
         # Chol vs target line chart

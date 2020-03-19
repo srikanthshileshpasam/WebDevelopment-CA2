@@ -22,7 +22,10 @@
   stroke-miterlimit: 10;
   stroke-width: 20px;
 }
-
+span{
+  color: black;
+  font-weight: bold;
+}
 /* Heart beat animation */
 @keyframes beat{
 	to { transform: scale(1.4); }
@@ -49,6 +52,7 @@
   }
 }
 </style>
+
 <nav class="navbar navbar-light bg-light justify-content-between" style="text-align: right;   padding: .5rem 1rem;">
   <a href="/logout" class="btn btn--radius-2 " type="submit" style="display: inline-block;
   font-weight: 400;
@@ -73,14 +77,12 @@
   <div class="wrapper wrapper--w680" style="text-align: center;">
 {% if result == 0 %}
 <div class="heart">&#x2665;</div>
-<h2  style="text-align: center;">No Heart Disease Detected.</h2>
+<h2  style="text-align: center;font-size: 1.5rem;">No Heart Disease Detected.</h2>
 {% elif result == 1 %}
 <div class="heart" style="color:black !important;">&#x2665;</div>
-<h2  style="text-align: center;">Heart Disease Detected.</h2>
+<h2  style="text-align: center;font-size: 1.5rem;">Heart Disease Detected!</h2>
 {% endif %}
 
-  </div>
-<br><br>
   <div style="text-align: center;">
     <button class="btn-red" onclick="graph1()">Age Histogram</button>
     <button class="btn-red" onclick="graph2()">Age vs Chol Scatter Plot</button>
@@ -171,7 +173,7 @@ var data = {
   labels: {{ chol1 | safe }},
   datasets: [
       {
-          label: "Prime and Fibonacci",
+          label: "Heart Health Graph",
           fillColor: "rgba(220,220,220,0.2)",
           strokeColor: "rgba(220,220,220,1)",
           pointColor: "rgba(220,220,220,1)",

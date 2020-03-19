@@ -7,28 +7,27 @@
 {% block page_heading %}User Login{% endblock %}
 
 {% block content %}
-
  <style>
  .hide{
      display: none;
  }
+ span{
+  color: black;
+  font-weight: bold;
+}
  html,body{
-     overflow-y: hidden;
+     overflow: hidden;
  }
  </style>
-
 <form method="POST" class="hide">
     {% csrf_token %}
     {{ login_form | as_bootstrap }}
+
 </form>
-
 <div class="main-w3layouts wrapper">
-
-    <h1>Login To Your HeartBeat Account!</h1>
-
+    <h1>Login Form</h1>
     <div class="main-agileinfo">
         <div class="agileits-top">
-
             <div class="hide" style="color: #f5c6cb;
             border-color: #f5c6cb;
             padding: .75rem 1.25rem;
@@ -37,19 +36,17 @@
             margin-bottom: 1rem;
             border: 1px solid transparent;
             border-radius: .25rem" id="error" >
-            </div>
-
+          </div>
             <form  method="POST">
                 {% csrf_token %}
                 <input class="text" type="text" name="username" placeholder="Username" required="">
                 <input class="text email" type="password" name="password" placeholder="Password" required="">
+
                 <input type="submit" value="LOGIN">
             </form>
-
             <p>Don't have an Account? <a href="/register"> Sign Up Now!</a></p>
         </div>
     </div>
-
     <ul class="colorlib-bubbles">
         <li></li>
         <li></li>
@@ -62,6 +59,13 @@
         <li></li>
         <li></li>
     </ul>
+</div>
+<div style=" position: absolute;top:0;right: 2%; color: white;font-size: 0.7rem;text-align: center;"><br>
+
+  <span>City: </span>  {{user_details.city}}<br><br>
+  <span>Country: </span>{{user_details.country}}<br><br>
+  <span>Longitude: </span>{{user_details.longitude}}<br><br>
+  <span>Latitude: </span>{{user_details.latitude}}<br><br>
 </div>
 
 <script>
